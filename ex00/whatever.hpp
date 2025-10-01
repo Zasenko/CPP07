@@ -1,5 +1,5 @@
-#ifndef whatewer_hpp
-#define whatewer_hpp
+#ifndef WHATEVER_HPP
+#define WHATEVER_HPP
 
 // swap: Swaps the values of two given parameters. Does not return anything.
 template <typename T>
