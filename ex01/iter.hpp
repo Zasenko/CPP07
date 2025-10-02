@@ -6,21 +6,36 @@
 // The third one is a function that will be called on every element of the array.
 #include <iostream>
 
-template <typename T>
-
-void iter(T *array[], const int length, void *f(T)) {
-    if (!array || !f) {
-        std::cerr << "Error: pointer is null" std::endl;
+template <typename T, typename Func>
+void iter(T *array, const int length, Func f) {
+    if (!array) {
+        std::cerr << "Error: pointer is null" << std::endl;
         return;
     }
-    for (i = 0; i < length; i++) {
+    for (int i = 0; i < length; i++) {
+        f(array[i]);
+    }
+}
+
+template <typename T, typename Func>
+void iter(const T *array, const int length, Func f) {
+    if (!array) {
+        std::cerr << "Error: pointer is null" << std::endl;
+        return;
+    }
+    for (int i = 0; i < length; i++) {
         f(array[i]);
     }
 }
 
 template <typename T>
-void print_t(const T elem) {
+void print_t(const T &elem) {
     std::cout << "print: " << elem << std::endl;
+}
+
+template <typename T>
+void print_twice_t(const T &elem) {
+    std::cout << "print twice: " << elem << " " << elem << std::endl;
 }
 
 #endif

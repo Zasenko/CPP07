@@ -1,27 +1,27 @@
 NAME = ex01
 
-C++ = c++
-C++FLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -pedantic
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -pedantic
 SRC = main.cpp
 
 OBJ = $(SRC:.cpp=.o)
-D = $(OBJ:.o=.d)
+DEP = $(OBJ:.o=.d)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(C++) $(C++FLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 %.o: %.cpp
-	$(C++) $(C++FLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	-rm -f $(OBJ) $(D)
+	-rm -f $(OBJ) $(DEP)
 
 fclean: clean
 	-rm -f $(NAME)
 
 re: fclean all
 
--include $(D)
+-include $(DEP)
 
 .PHONY: all clean fclean re

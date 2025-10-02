@@ -1,24 +1,29 @@
+
 #include "iter.hpp"
-
-void print_int(const int i) {
-    std::cout << "print: " << i << std::endl;
-}
-
-void print_string(const std::string s) {
-    std::cout << "print: " << s << std::endl;
-}
 
 int main(void)
 {
+    const int length = 5;
 
-    const int length = 10;
-    int array[length];
-
+    int array_int[length];
     for (int i = 0; i < length; i++) {
-        array[i] = i * length;
+        array_int[i] = i + 1;
     }
 
-    iter(&array, length, print_int);
+    std::string array_string[length];
+    for (int i = 0; i < length; i++) {
+        array_string[i] = std::string("hello");
+    }
+
+    iter(array_int, length, print_t<int>);
+    std::cout << "-----" << std::endl;
+    iter(array_int, length, print_twice_t<int>);
+
+    std::cout << "------------------" << std::endl;
+
+    iter(array_string, length, print_t<std::string>);
+    std::cout << "-----" << std::endl;
+    iter(array_string, length, print_twice_t<std::string>);
 
     return 0;
 }
