@@ -2,30 +2,24 @@
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
 
+#include <iostream>
+
+template<typename T>
+class Array {
+    private:
+        T* _elements;
+        unsigned int _n;
+    public:
+        Array();
+        Array(unsigned int n);
+        ~Array();
+        Array(const Array& copy);
+        Array &operator=(const Array& src);
+        T& operator[](unsigned int index);
+        const T& operator[](unsigned int index) const;
+        unsigned int size() const;
+};
+
 #include "Array.tpp"
-
-template<typename T>
-Array::Array() {
-
-}
-
-template<typename T>
-Array::Array(unsigned int n) {
-
-}
-
-template<typename T>
-Array::~Array() {
-
-}
-
-template<typename T>
-Array::Array(const Array &copy) {
-
-}
-
-template<typename T>
-Array &Array::opeartor=(const Array &src) {
-}
 
 #endif
